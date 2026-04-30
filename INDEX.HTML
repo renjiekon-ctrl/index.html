@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Eternal Love | A Journey of Hearts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Premium Background Gradients */
+        body.slide1 { background: linear-gradient(135deg, hsl(55, 76%, 69%) 0%, lab(91.86% -43.78 -9.83) 100%); }
+        body.slide2 { background: linear-gradient(135deg, hsl(300, 31%, 56%) 100%, #75474d 100%); }
+        body.slide3 { background: linear-gradient(135deg, #4facfe 100%, #00f2fe 100%); }
+        body.slide4 { background: linear-gradient(135deg, #43e97b 100%, #38f9d7 100%); }
+        body.slide5 { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        body.slide6 { background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%); }
+        body.slide7 { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); }
+        body.slide8 { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); }
+        body.slide9 { background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%); }
+        body.slide10 { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+
+        /* Animated Background Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: hwb(178 47% 0% / 0.302);
+            border-radius: 50%;
+            animation: floatParticle linear infinite;
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.5; }
+            100% {
+                transform: translateY(-10vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Premium Card Design */
+        .slide-card {
+            background: hwb(345 82% 0% / 0.98);
+            backdrop-filter: blur(10px);
+            border-radius: 48px;
+            padding: 50px 40px;
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.3);
+            animation: slideIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transition: transform 0.3s ease;
+        }
+
+        .slide-card:hover {
+            transform: translateY(-5px);
+        }
+
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateX(50px) scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+        }
+
+        /* Premium Number Badge */
+        .step-number {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 30px;
+            background: linear-gradient(135deg,lch(90.63% 36.22 203.01) , oklch(76.266% 0.1064 19.779));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            font-weight: 700;
+            font-family: 'Cormorant Garamond', serif;
+            color: lab(90.94% -56.64 39.07);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 15px 35px rgba(0,0,0,0.2); }
+            50% { transform: scale(1.05); box-shadow: 0 20px 45px rgba(0,0,0,0.3); }
+        }
+
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.4em;
+            font-weight: 600;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, #cc6dcf, hsl(311, 27%, 53%));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .message {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: hwb(325 36% 28%);
+            margin: 35px 0;
+            min-height: 180px;
+        }
+
+        /* Premium Button Styles */
+        .btn {
+            padding: 14px 32px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: #a4e4ec4d;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, hwb(39 63% 0%), hwb(44 48% 11%));
+            color: hsl(183, 47%, 39%);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px #c8c06680;
+        }
+
+        .btn-secondary {
+            background: hsl(178, 39%, 63%);
+            color: hsl(193, 28%, 41%);
+        }
+
+        .btn-secondary:hover:not(:disabled) {
+            background: hwb(59 59% 2%);
+            transform: translateY(-2px);
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .btn-nav {
+            flex: 1;
+            padding: 12px 24px;
+            font-weight: 600;
+        }
+
+        .btn-prev {
+            background: rgba(0, 0, 0, 0.1);
+            color: #4a5568;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: hsl(0, 0%, 97%);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Premium Dot Navigation */
+        .dots {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            width: 35px;
+            background: #fc7c7c;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #fffb0c;
+        }
+
+        .dot:hover {
+            background: hsl(0, 55%, 89%);
+            transform: scale(1.2);
+        }
+
+        /* Interactive Components */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .memory-card {
+            background: linear-gradient(135deg, hwb(341 47% 0%), hsl(0, 53%, 65%));
+            border-radius: 20px;
+            padding: 20px 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .memory-card:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .love-meter {
+            width: 100%;
+            height: 40px;
+            background: hsl(214, 48%, 64%);
+            border-radius: 30px;
+            overflow: hidden;
+            margin: 25px 0;
+        }
+
+        .meter-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #f093fb, #f5576c);
+            border-radius: 30px;
+            transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #051d1e;
+            font-weight: bold;
+        }
+
+        .reason-list {
+            text-align: left;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .reason-item {
+            background: linear-gradient(135deg, hwb(171 8% 8% / 0.082), hsla(180, 93%, 47%, 0.966));
+            margin: 12px 0;
+            padding: 12px 20px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .reason-item:hover {
+            transform: translateX(10px);
+            background: linear-gradient(135deg, hwb(180 7% 8%), #12d6e4);
+        }
+
+        .floating-heart {
+            position: fixed;
+            font-size: 20px;
+            pointer-events: none;
+            z-index: 9999;
+            animation: floatHeart 5s linear forwards;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(50vh) scale(1.2);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-10vh) scale(0);
+                opacity: 0;
+            }
+        }
+
+        .firework {
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            animation: fireworkExplosion 1.2s ease-out forwards;
+        }
+
+        @keyframes fireworkExplosion {
+            0% {
+                transform: scale(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(3) rotate(180deg);
+                opacity: 0;
+            }
+        }
+
+        .confetti {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            animation: confettiFall 3s linear forwards;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .countdown-timer {
+            font-size: 2em;
+            font-weight: 700;
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 20px 0;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: lab(85.59% -46.52 -11.43);
+            font-size: 0.85em;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 600px) {
+            .slide-card { padding: 35px 25px; }
+            h2 { font-size: 1.8em; }
+            .step-number { width: 70px; height: 70px; font-size: 2em; }
+        }
+    </style>
+</head>
+<body class="slide1">
+
+<div class="particles" id="particles"></div>
+
+<div class="container">
+    <div class="slide-card">
+        <div class="step-number" id="stepNumber">1</div>
+        <h2 id="slideTitle">The Beginning</h2>
+        <div class="message" id="slideMessage"></div>
+        <div id="extraContent"></div>
+        
+        <div class="nav-buttons">
+            <button class="btn btn-nav btn-prev" id="prevBtn" onclick="changeSlide(-1)" disabled>
+                <i class="fas fa-arrow-left"></i> Back
+            </button>
+            <button class="btn btn-nav btn-next" id="nextBtn" onclick="changeSlide(1)">
+                Next <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+    
+    <div class="dots" id="dotsContainer"></div>
+    <footer>✧ A Journey of Hearts ✧ Chapter <span id="currentChapter">1</span> of 10</footer>
+</div>
+
+<script>
+    // ==================== PREMIUM SLIDES CONTENT ====================
+    const slides = [
+        {
+            number: "26",
+            title: "Obsessed w/DOCTOR MAMA",
+            message: "I just need u to know u're literally living rent-free in my head 24/7. Even when I'm booked and busy, my mind is just like:what if they text rn?"
+        },{number: "26",
+            title: "Still falling",
+            message: "Close ur eyes for a sec n just manifest me there. I'm right next to u, cheesing at u the way I always do!!",
+            hasGallery: true
+        },
+        {
+            number: "26",
+            title: "Caught Falling,No Escape",
+            message: "Fr though?u stay livin in my head rent-free. Like, the Wi-Fi is strong up there and u're the main character of the show.",
+            hasLetter: true
+        },
+        {
+            number: "26",
+            title: "Little My Soft Spot",
+            message: "Even when I'm in my grind era, u're still the intrusive thought I never want to get rid of.",
+            hasLoveMeter: true
+        },
+        {
+            number: "26",
+            title: "Ain't Temporary",
+            message: "Let's romanticize our life together, yeh? No ick. Just good vibes and better feelings. I got u. Always. Period.",
+            hasTimer: true
+        },
+        {
+            number: "26",
+            title: "The Reasons Why I love U ",
+            message: "u're literally my favorite noti. always on my mind, even when life is giving chaos.",
+            hasReasons: true
+        },
+        {
+            number: "26",
+            title: "All I Need is U",
+            message: "close ur eyes real quick?okyy now imagine me smiling at u like a total simp. that's me. always i'll always show up for u. no questions asked. 💖",
+            hasSong: true
+        },
+        {
+            number: "26",
+            title: "LOVE QUIZZ",
+            message: "Aft all these moments, all these feelins, all this love...",
+            hasQuestion: true
+        },
+        {
+            number: "26",
+            title: "USSSSS",
+            message: "u re the background app my heart never closes. The plot twist I d choose every single time. Even when my life is on DND… ure still the one I d break my streak for.",
+            hasCelebration: true
+        },
+        {
+            number: "26",
+            title: " Eternity Awaits ",
+            message: "This isn't an ending. It's a promise. A promise of forever, of laughter, of growing old together, of a love that never fades.I choose u. Today, tomorrow, and always.u r my greatest adventure.",
+            color: "slide10"
+        }
+    ];
+
+    let currentSlide = 0;11
+    let timerInterval = null;
+
+    function createParticles() {
+        const container = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            const size = Math.random() * 5 + 2;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDuration = Math.random() * 8 + 4 + 's';
+            particle.style.animationDelay = Math.random() * 5 + 's';
+            container.appendChild(particle);
+        }
+    }
+
+    function updateSlide() {
+        const slide = slides[currentSlide];
+        document.body.className = slide.color || 'slide${currentSlide + 1}';
+        document.getElementById("stepNumber").innerHTML = slide.number;
+        document.getElementById("slideTitle").innerHTML = slide.title;
+        document.getElementById("slideMessage").innerHTML = slide.message;
+        document.getElementById("currentChapter").innerHTML = (currentSlide + 1).toString().padStart(2, '0');
+        
+        const extraDiv = document.getElementById("extraContent");
+        extraDiv.innerHTML = "";
+        
+        if (slide.hasGallery) createGallery(extraDiv);
+        if (slide.hasLetter) createLetter(extraDiv);
+        if (slide.hasLoveMeter) createLoveMeter(extraDiv);
+        if (slide.hasTimer) createTimer(extraDiv);
+        if (slide.hasReasons) createReasons(extraDiv);
+        if (slide.hasSong) createSong(extraDiv);
+        if (slide.hasQuestion) createQuestion(extraDiv);
+        if (slide.hasCelebration) createCelebration(extraDiv);
+        
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        
+        prevBtn.disabled = currentSlide === 0;
+        nextBtn.innerHTML = currentSlide === slides.length - 1 ? 'Forever Begins <i class="fas fa-heart"></i>' : 'Next <i class="fas fa-arrow-right"></i>';
+        
+        updateDots();
+        createHeartBurst(8);
+    }
+
+    function createGallery(container) {
+        const memories = [
+            { emoji: "💬", text: "First Conversation", color: "#667eea" },
+            { emoji: "😊", text: "First Smile", color: "#f093fb" },
+            { emoji: "🌙", text: "Late Nights", color: "#4facfe" },
+            { emoji: "💋", text: "Kiss", color: "#43e97b" },
+            { emoji: "🎬", text: "Movie Nights", color: "#fa709a" },
+            { emoji: "💕", text: "Special Moments", color: "#a18cd1" },
+            { emoji: "🐡", text: "like ur cheeks", color: "#a18cd1" },
+            { emoji: "🌹", text: "Fav Flower", color: "#a18cd1" }
+        ];
+        
+        const grid = document.createElement("div");
+        grid.className = "gallery-grid";
+        
+        memories.forEach(m => {
+            const card = document.createElement("div");
+            card.className = "memory-card";
+            card.style.background = 'linear-gradient (135deg, ${m.color}20, ${m.color}40)';
+            card.innerHTML = `<div style="font-size: 2.5em;">${m.emoji}</div>
+                             <div style="margin-top: 10px; font-weight: 600;">${m.text}</div>`;
+            card.onclick = () => {
+                createHeartBurst(15);
+                alert(`💖 ${m.text} - A beautiful memory I'll never forget nww ma"! 💖`);
+                
+                
+                
+            };
+        
+            grid.appendChild(card);
+        });
+        container.appendChild(grid);
+    }
+
+    function createLetter(container) {
+        const btn = document.createElement("button");
+        btn.className = "btn btn-primary";
+        btn.innerHTML = '<i class="fas fa-envelope"></i> Open the Letter <i class="fas fa-heart"></i>';
+        btn.onclick = () => {
+            const letterDiv = document.createElement("div");
+            letterDiv.style.cssText = "margin-top: 20px; padding: 25px; background: linear-gradient(135deg, #fff5f5, #fff); border-radius: 20px; animation: slideIn 0.4s ease;";
+            letterDiv.innerHTML = `
+                <i class="fas fa-quote-left" style="font-size: 2em; color: #667eea; opacity: 0.5;"></i>
+                <p style="margin: 15px 0; line-height: 1.8;">My Dearest,</p>
+                <p style="line-height: 1.8;"> Hey!! I know u r  hurt, n I hate that I am the reason for it.Deleting our chats did not erase anything for me. If anything, it made me realize how much those little texts, those random moments… u actually mean to me. It felt like I lost a piece of us, and honestly, that scared me.I’m not here to make excuses—I just want u to know u r not someone I can easily let go of. U r  different. U matter more than I probably ever said out loud.I miss talking to u, I miss ur presence, and yehh I miss us.If I could go back, I wouldn’t delete a single word, because every part of you is something I want to keep, not lose.So if u can do not push me away completely. Let me make it right, slowly, properly—cuz u r  worth that and more 🤍</p>
+                <p style="margin-top: 15px; font-style: italic;">Forever yours,</p>
+                <p style="font-weight: bold;">❤️ Someone who adores you</p>
+                <i class="fas fa-quote-right" style="font-size: 2em; color: #1ecbf2 ; opacity: 0.5; float: right;"></i>
+            `;
+            container.appendChild(letterDiv);
+            btn.disabled = true;
+            btn.style.opacity = "0.5";
+            createHeartBurst(20);
+        };
+        container.appendChild(btn);
+    }
+
+    function createLoveMeter(container) {
+        let filled = false;
+        const meterHTML = `
+            <div class="love-meter"><div class="meter-fill" id="meterFill" style="width: 0%; justify-content: center;"></div>
+            </div>
+            <button class="btn btn-primary" id="meterBtn" style="width: 100%;">
+                <i class="fas fa-heart"></i> Reveal My Love <i class="fas fa-heart"></i>
+            </button>
+        `;
+        container.innerHTML = meterHTML;
+        
+        document.getElementById("meterBtn").onclick = () => {
+            if (filled) return;
+            const fill = document.getElementById("meterFill");
+            let width = 0;
+            const interval = setInterval(() => {
+                width += 5;
+                fill.style.width = width + "%";
+                if (width >= 100) {
+                    clearInterval(interval);
+                    fill.innerHTML = "💖 INFINITE LOVE 💖";
+                    createHeartBurst(30);
+                    filled = true;
+                }
+            }, 50);
+        };
+    }
+
+    function createTimer(container) {
+        const targetDate = localStorage.getItem("loveDate") || "2024-01-01";
+        const timerHTML = `
+            <div class="countdown-timer" id="countdownDisplay">-- : -- : -- : --</div>
+            <button class="btn btn-secondary" id="setDateBtn" style="width: 100%;">
+                <i class="fas fa-calendar-alt"></i> Set Our Special Date
+            </button>
+        `;
+        container.innerHTML = timerHTML;
+        
+        function updateCountdown() {
+            const now = new Date();
+            const target = new Date(localStorage.getItem("loveDate") || "2024-01-01");
+            const diff = target - now;
+            
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000*60*60*24));
+                const hours = Math.floor((diff % (86400000))/3600000);
+                const mins = Math.floor((diff % 3600000)/60000);
+                const secs = Math.floor((diff % 60000)/1000);
+                document.getElementById("countdownDisplay").innerHTML = '';
+            } else {
+                const days = Math.floor(Math.abs(diff) / (1000*60*60*24));
+                document.getElementById("countdownDisplay").innerHTML = '💖 Days since our journey began 💖';
+            }
+        }
+        
+        if (timerInterval) clearInterval(timerInterval);
+        timerInterval = setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        document.getElementById("setDateBtn").onclick = () => {
+            const date = prompt("Enter our special date (YYYY-MM-DD):", "2026-4-26");
+            if (date) {
+                localStorage.setItem("loveDate", date);
+                updateCountdown();
+                createHeartBurst(15);
+            }
+        };
+    }
+
+    function createReasons(container) {
+        const reasons = [
+            "I love her cuz even her smallest smile can change my whole mood",
+            "I love her cuz she makes my world feel softer and brighter.",
+            "I love her cuz she feels like home in a way I can’t explain.",
+            "I love her cuz she understands me w/out me saying much.",
+            "I love her cuz being with her just feels right.",
+            "I love her cuz, obviously, my heart chose her w/out hesitation"
+        ];
+        
+        const listDiv = document.createElement("div");
+        listDiv.className = "reason-list";
+        
+        reasons.forEach((reason, idx) => {
+            const item = document.createElement("div");
+            item.className = "reason-item";
+            item.innerHTML = 'CLICK ME';
+            item.onclick = () => {
+                createHeartBurst(10);
+                alert(`💖 Reason ${idx + 1}: ${reason} 💖`);
+            };
+            listDiv.appendChild(item);
+        });
+        container.appendChild(listDiv);
+    }
+
+    function createSong(container) {
+        const songHTML = `
+            <div style="background: linear-gradient(135deg, #667eea20, #764ba220); border-radius: 20px; padding: 25px;">
+                <i class="fas fa-music" style="font-size: 3em; color: #667eea;"></i><p style="margin: 15px 0; font-style: italic;">"Every beat of my heart whispers your name..."</p>
+                <div style="display: flex; gap: 15px; justify-content: center;">
+                    <button class="btn btn-secondary" id="playNoteBtn"><i class="fas fa-play"></i> Play Note</button>
+                    <button class="btn btn-primary" id="fullSongBtn"><i class="fas fa-headphones"></i> Full Melody</button>
+                </div>
+            </div>
+        `;
+        container.innerHTML = songHTML;
+        
+        document.getElementById("playNoteBtn").onclick = () => {
+            createHeartBurst(12);
+            alert("🎵 *a beautiful melody plays just for u* 🎵");
+        };
+        document.getElementById("fullSongBtn").onclick = () => {
+            createHeartBurst(25);
+            alert("🎶 This song plays in my heart whenever I think of u! 🎶");
+        };
+    }
+
+    function createQuestion(container) {
+        const questionHTML = `
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <button class="btn btn-primary" id="proposeYes" style="padding: 15px 40px; font-size: 1.1em;">
+                    <i class="fas fa-heart"></i> Yes, Forever <i class="fas fa-heart"></i>
+                </button>
+                <button class="btn btn-secondary" id="proposeNo" style="padding: 15px 40px;">
+                    <i class="fas fa-clock"></i> Let Me Think
+                </button>
+            </div>
+        `;
+        container.innerHTML = questionHTML;
+        
+        document.getElementById("proposeYes").onclick = () => {
+            createFireworks(60);
+            createConfetti(100);
+            createHeartBurst(80);
+            alert("💖 YES! U've made me the happiest person alive! 💖");
+            setTimeout(() => changeSlide(1), 2000);
+        };
+        
+        let noCount = 0;
+        document.getElementById("proposeNo").onclick = () => {
+            noCount++;
+            if (noCount === 1) alert("💕 Take your time... I'll wait for you. 💕");
+            else if (noCount === 2) alert("💗 My heart is patient. Whenever you're ready. 💗");
+            else if (noCount === 3) alert("💖 Okyy, I know ur heart... it's saying YES! 💖");
+            else document.getElementById("proposeYes").click();
+            createHeartBurst(10);
+        };
+    }
+
+    function createCelebration(container) {
+        const celebHTML = `
+            <button class="btn btn-primary" id="celebrateBtn" style="padding: 18px 40px; font-size: 1.2em;">
+                <i class="fas fa-glass-cheers"></i> Celebrate Our Love <i class="fas fa-heart"></i>
+            </button>
+        `;
+        container.innerHTML = celebHTML;
+        
+        document.getElementById("celebrateBtn").onclick = () => {
+            createFireworks(100);
+            createConfetti(150);
+            createHeartBurst(100);
+            alert("🎊💖 CELEBRATION TIME! I LOVE YOU!!!! 💖🎊");
+        };
+    }
+
+    function changeSlide(direction) {
+        const newSlide = currentSlide + direction;
+        if (newSlide >= 0 && newSlide < slides.length) {
+            currentSlide = newSlide;
+            updateSlide();
+        } else if (currentSlide === slides.length - 1 && direction === 1) {
+            createFireworks(150);
+            createConfetti(200);
+            createHeartBurst(150);
+            alert("💖💖💖 I LOVE YOU FOREVER N ALWAYS!!! 💖💖💖");
+        }
+    }
+
+    function createFireworks(count) {
+        for (let i = 0; i < count; i++) {
+            setTimeout(() => {
+                const fw = document.createElement("div");
+                fw.className = "firework";
+                const icons = ["✨", "⭐", "💖", "🎉", "🌟", "💕", "🎊", "💗", "🌸", "🌹"];
+                fw.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+                fw.style.left = Math.random() * 100 + "%";
+                fw.style.top = Math.random() * 100 + "%";
+                fw.style.fontSize = Math.random() * 40 + 20 + "px";
+                document.body.appendChild(fw);setTimeout(() => fw.remove(), 1200);
+            }, i * 30);
+        }
+    }
+
+    function createConfetti(count) {
+        for (let i = 0; i < count; i++) {
+            setTimeout(() => {
+                const conf = document.createElement("div");
+                conf.className = "confetti";
+                const colors = ["#ff6b8a", "#667eea", "#f093fb", "#43e97b", "#fa709a", "#fee140"];
+                conf.style.background = colors[Math.floor(Math.random() * colors.length)];
+                conf.style.width = Math.random() * 10 + 5 + "px";
+                conf.style.height = Math.random() * 10 + 5 + "px";
+                conf.style.left = Math.random() * 100 + "%";
+                conf.style.animationDuration = Math.random() * 3 + 2 + "s";
+                document.body.appendChild(conf);
+                setTimeout(() => conf.remove(), 3000);
+            }, i * 20);
+        }
+    }
+
+    function createHeartBurst(count) {
+        for (let i = 0; i < count; i++) {
+            setTimeout(() => {
+                const heart = document.createElement("div");
+                heart.className = "floating-heart";
+                const hearts = ["❤️", "💖", "💕", "💗", "💓", "💘", "💝", "🌸", "🌹", "💞"];
+                heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + "%";
+                heart.style.fontSize = Math.random() * 30 + 15 + "px";
+                heart.style.animationDuration = Math.random() * 4 + 3 + "s";
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 5000);
+            }, i * 40);
+        }
+    }
+
+    function updateDots() {
+        const container = document.getElementById("dotsContainer");
+        container.innerHTML = "";
+        for (let i = 0; i < slides.length; i++) {
+            const dot = document.createElement("div");
+            dot.classList.add("dot");
+            if (i === currentSlide) dot.classList.add("active");
+            dot.onclick = () => {
+                currentSlide = i;
+                updateSlide();
+            };
+            container.appendChild(dot);
+        }
+    }
+
+    // Continuous floating hearts effect
+    setInterval(() => {
+        if (Math.random() > 0.7) {
+            const heart = document.createElement("div");
+            heart.className = "floating-heart";
+            const hearts = ["❤️", "💖", "💕", "💗"];
+            heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.style.left = Math.random() * 100 + "%";
+            heart.style.fontSize = Math.random() * 20 + 12 + "px";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+    }, 300);
+
+    createParticles();
+    updateSlide();
+</script>
+</body>
+</html>
+</html>
